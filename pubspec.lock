@@ -178,7 +178,7 @@ packages:
     source: hosted
     version: "0.9.3"
   firebase_auth:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: firebase_auth
       sha256: "49fd35ce06f2530dd460e5dc123235731cb61dd7c76b0af4b6e190404880d04d"
@@ -202,7 +202,7 @@ packages:
     source: hosted
     version: "5.6.2"
   firebase_core:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: firebase_core
       sha256: "2e9324f719e90200dc7d3c4f5d2abc26052f9f2b995d3b6626c47a0dfe1c8192"
@@ -343,6 +343,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  go_router:
+    dependency: "direct main"
+    description:
+      name: go_router
+      sha256: b3cadd2cd59a4103fd5f6bc572ca75111264698784e927aa471921c3477d5475
+      url: "https://pub.dev"
+    source: hosted
+    version: "10.0.0"
   http:
     dependency: transitive
     description:
@@ -439,6 +447,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  logging:
+    dependency: transitive
+    description:
+      name: logging
+      sha256: "623a88c9594aa774443aa3eb2d41807a48486b5613e67599fb4c41c0ad47c340"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
   matcher:
     dependency: transitive
     description:

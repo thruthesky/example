@@ -1,0 +1,32 @@
+import 'package:example/screens/chat/chat.room_list.screen.dart';
+import 'package:example/screens/home/home.screen.dart';
+import 'package:example/screens/login/login.screen.dart';
+import 'package:example/screens/menu/menu.screen.dart';
+import 'package:example/screens/profile/profile.screen.dart';
+import 'package:go_router/go_router.dart';
+
+final router = GoRouter(
+  // initialLocation: '/',
+  routes: [
+    GoRoute(
+      path: HomeScreen.routeName,
+      builder: (context, state) => const HomeScreen(),
+    ),
+    GoRoute(
+      path: MenuScreen.routeName,
+      builder: (context, state) => const MenuScreen(),
+    ),
+    GoRoute(
+      path: LoginScreen.routeName,
+      builder: (context, state) => const LoginScreen(),
+    ),
+    GoRoute(
+      path: ProfileScreen.routeName,
+      builder: (context, state) => const ProfileScreen(),
+    ),
+    GoRoute(
+      path: ChatRoomListScren.routeName,
+      builder: (context, state) => const ChatRoomListScren(),
+    ),
+  ],
+);
