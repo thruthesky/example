@@ -2,6 +2,7 @@ import 'package:example/screens/chat/chat.room_list.screen.dart';
 import 'package:example/screens/login/login.screen.dart';
 import 'package:example/screens/menu/menu.screen.dart';
 import 'package:example/screens/profile/profile.screen.dart';
+import 'package:example/screens/test/test.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:fireflutter/fireflutter.dart';
@@ -69,7 +70,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     const SizedBox(height: 20),
                     StatefulBuilder(builder: (context, setState) {
-                      final nameController = TextEditingController(text: user.name);
+                      final nameController =
+                          TextEditingController(text: user.name);
                       return Column(
                         children: [
                           TextField(
@@ -89,11 +91,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: const Text("Update"),
                           ),
                           ElevatedButton(
-                            onPressed: () => context.push(ChatRoomListScren.routeName),
+                            onPressed: () =>
+                                context.push(ChatRoomListScren.routeName),
                             child: const Text('Open EasyChat Room List'),
                           ),
                           ElevatedButton(
-                            onPressed: () => context.push(ChatRoomListScren.routeName),
+                            onPressed: () =>
+                                context.push(ChatRoomListScren.routeName),
                             child: const Text('Open User List'),
                           ),
                           ElevatedButton(
@@ -120,16 +124,18 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: const Text('Open Example Chat Room'),
                           ),
                           ElevatedButton(
-                            onPressed: () => Navigator.of(context)
-                                .push(MaterialPageRoute(builder: (_) => const ProfileScreen())),
+                            onPressed: () => Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (_) => const ProfileScreen())),
                             child: const Text('Profile'),
                           ),
                           ElevatedButton(
-                            onPressed: () => context.push(ChatRoomListScren.routeName),
+                            onPressed: () =>
+                                context.push(ChatRoomListScren.routeName),
                             child: const Text('Open Room List'),
                           ),
                           ElevatedButton(
-                            onPressed: () => context.push(ChatRoomListScren.routeName),
+                            onPressed: () => context.push(TestScreen.routeName),
                             child: const Text('TEST EasyChat'),
                           ),
                         ],
