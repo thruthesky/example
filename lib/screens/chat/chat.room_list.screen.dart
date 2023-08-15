@@ -1,5 +1,6 @@
 import 'package:fireflutter/fireflutter.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ChatRoomListScren extends StatefulWidget {
   static const String routeName = '/chat_room_list';
@@ -29,6 +30,23 @@ class _ChatRoomListScrenState extends State<ChatRoomListScren> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text("Chat Room List"),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: () {
+              ChatService.instance.showCreateChatRoomDialog(
+                context,
+                success: (room) {
+                  context.pop();
+                  controller.showChatRoom(context: context, room: room);
+                },
+                cancel: () {
+                  context.pop();
+                },
+              );
+            },
+          ),
+        ],
       ),
       body: ChatRoomListView(
         controller: controller,
