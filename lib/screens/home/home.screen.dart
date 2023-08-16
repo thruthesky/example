@@ -1,4 +1,5 @@
 import 'package:example/screens/chat/chat.room_list.screen.dart';
+import 'package:example/screens/chat/open_rooms.screen.dart';
 import 'package:example/screens/login/login.screen.dart';
 import 'package:example/screens/menu/menu.screen.dart';
 import 'package:example/screens/profile/profile.screen.dart';
@@ -131,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           ElevatedButton(
                             onPressed: () =>
-                                context.push(ChatRoomListScren.routeName),
+                                context.push(OpenRoomsScreen.routeName),
                             child: const Text('Open Room List'),
                           ),
                           ElevatedButton(

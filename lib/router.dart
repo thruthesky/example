@@ -6,6 +6,8 @@ import 'package:example/screens/profile/profile.screen.dart';
 import 'package:example/screens/test/test.screen.dart';
 import 'package:go_router/go_router.dart';
 
+import 'screens/chat/open_rooms.screen.dart';
+
 final router = GoRouter(
   // initialLocation: '/',
   routes: [
@@ -32,6 +34,10 @@ final router = GoRouter(
     GoRoute(
       path: TestScreen.routeName,
       builder: (context, state) => const TestScreen(),
+    ),
+    GoRoute(
+      path: OpenRoomsScreen.routeName,
+      builder: (context, state) => const OpenRoomsScreen(),
     ),
   ],
 );
