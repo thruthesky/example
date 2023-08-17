@@ -3,6 +3,7 @@ import 'package:example/screens/home/home.screen.dart';
 import 'package:example/screens/login/login.screen.dart';
 import 'package:example/screens/menu/menu.screen.dart';
 import 'package:example/screens/profile/profile.screen.dart';
+import 'package:example/screens/test/test.screen.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(
@@ -27,6 +28,10 @@ final router = GoRouter(
     GoRoute(
       path: ChatRoomListScren.routeName,
       builder: (context, state) => const ChatRoomListScren(),
+    ),
+    GoRoute(
+      path: TestScreen.routeName,
+      builder: (context, state) => const TestScreen(),
     ),
   ],
 );
