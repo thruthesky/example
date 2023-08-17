@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 class ChatRoomListScren extends StatefulWidget {
   static const String routeName = '/chat_room_list';
   const ChatRoomListScren({super.key, this.user});
-  final UserModel? user;
+  final User? user;
 
   @override
   State<ChatRoomListScren> createState() => _ChatRoomListScrenState();

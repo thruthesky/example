@@ -9,8 +9,8 @@ final router = GoRouter(
   // initialLocation: '/',
   routes: [
     GoRoute(
-      path: HomeScreen.routeName,
-      builder: (context, state) => const HomeScreen(),
+      path: FriendScreen.routeName,
+      builder: (context, state) => const FriendScreen(),
     ),
     GoRoute(
       path: MenuScreen.routeName,
