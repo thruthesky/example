@@ -63,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: const Text('Logout'),
                     ),
                     const SizedBox(height: 20),
-                    UserAvatar(
+                    UserProfileAvatar(
                       user: user,
                       upload: true,
                       delete: true,
@@ -71,34 +71,31 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     const SizedBox(height: 20),
                     StatefulBuilder(builder: (context, setState) {
-                      final nameController =
-                          TextEditingController(text: user.name);
+                      final nameController = TextEditingController(text: user.displayName);
                       return Column(
                         children: [
                           TextField(
                             controller: nameController,
                             decoration: const InputDecoration(
                               border: OutlineInputBorder(),
-                              labelText: 'Name',
+                              labelText: 'Display Name',
                             ),
                           ),
                           ElevatedButton(
                             onPressed: () async {
                               await UserService.instance.update(
-                                name: nameController.text,
+                                displayName: nameController.text,
                               );
                               setState(() {});
                             },
                             child: const Text("Update"),
                           ),
                           ElevatedButton(
-                            onPressed: () =>
-                                context.push(ChatRoomListScren.routeName),
+                            onPressed: () => context.push(ChatRoomListScren.routeName),
                             child: const Text('Open EasyChat Room List'),
                           ),
                           ElevatedButton(
-                            onPressed: () =>
-                                context.push(ChatRoomListScren.routeName),
+                            onPressed: () => context.push(ChatRoomListScren.routeName),
                             child: const Text('Open User List'),
                           ),
                           ElevatedButton(
@@ -125,14 +122,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: const Text('Open Example Chat Room'),
                           ),
                           ElevatedButton(
-                            onPressed: () => Navigator.of(context).push(
-                                MaterialPageRoute(
-                                    builder: (_) => const ProfileScreen())),
+                            onPressed: () =>
+                                Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ProfileScreen())),
                             child: const Text('Profile'),
                           ),
                           ElevatedButton(
-                            onPressed: () =>
-                                context.push(OpenRoomsScreen.routeName),
+                            onPressed: () => context.push(OpenRoomsScreen.routeName),
                             child: const Text('Open Room List'),
                           ),
                           ElevatedButton(
@@ -193,8 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 );
               },
               documentNotExistBuilder: () {
-                const str =
-                    "You are logged in, but your document does not exist. I am going to CREATE it !!";
+                const str = "You are logged in, but your document does not exist. I am going to CREATE it !!";
                 UserService.instance.create();
                 return const Text(str);
               },
