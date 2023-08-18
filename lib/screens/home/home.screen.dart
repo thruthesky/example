@@ -1,7 +1,9 @@
+import 'package:example/screens/categories/categories_screen.dart';
 import 'package:example/screens/chat/chat.room_list.screen.dart';
 import 'package:example/screens/chat/open_rooms.screen.dart';
 import 'package:example/screens/login/login.screen.dart';
 import 'package:example/screens/menu/menu.screen.dart';
+import 'package:example/screens/posts/posts_screen.dart';
 import 'package:example/screens/profile/profile.screen.dart';
 import 'package:example/screens/test/test.screen.dart';
 import 'package:example/screens/user_list/user.list.screen.dart';
@@ -141,6 +143,14 @@ class _FriendScreenState extends State<FriendScreen> {
                             ElevatedButton(
                               onPressed: () => context.push(OpenRoomsScreen.routeName),
                               child: const Text('Open Room List'),
+                            ),
+                            ElevatedButton(
+                              onPressed: () => context.push(CategoriesScreen.routeName),
+                              child: const Text('Categories'),
+                            ),
+                            ElevatedButton(
+                              onPressed: () => context.push(PostsScreen.routeName),
+                              child: const Text('Posts'),
                             ),
                             ElevatedButton(
                               onPressed: () => context.push(TestScreen.routeName),
