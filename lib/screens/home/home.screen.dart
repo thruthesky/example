@@ -1,7 +1,12 @@
+import 'package:example/screens/categories/categories_screen.dart';
 import 'package:example/screens/chat/chat.room_list.screen.dart';
+import 'package:example/screens/chat/open_rooms.screen.dart';
 import 'package:example/screens/login/login.screen.dart';
 import 'package:example/screens/menu/menu.screen.dart';
+import 'package:example/screens/posts/posts_screen.dart';
 import 'package:example/screens/profile/profile.screen.dart';
+import 'package:example/screens/test/test.screen.dart';
+import 'package:example/screens/user_list/user.list.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:fireflutter/fireflutter.dart';
@@ -104,7 +109,7 @@ class _FriendScreenState extends State<FriendScreen> {
                               child: const Text('Open EasyChat Room List'),
                             ),
                             ElevatedButton(
-                              onPressed: () => context.push(ChatRoomListScren.routeName),
+                              onPressed: () => context.push(UserListScren.routeName),
                               child: const Text('Open User List'),
                             ),
                             ElevatedButton(
@@ -136,11 +141,19 @@ class _FriendScreenState extends State<FriendScreen> {
                               child: const Text('Profile'),
                             ),
                             ElevatedButton(
-                              onPressed: () => context.push(ChatRoomListScren.routeName),
+                              onPressed: () => context.push(OpenRoomsScreen.routeName),
                               child: const Text('Open Room List'),
                             ),
                             ElevatedButton(
-                              onPressed: () => context.push(ChatRoomListScren.routeName),
+                              onPressed: () => context.push(CategoriesScreen.routeName),
+                              child: const Text('Categories'),
+                            ),
+                            ElevatedButton(
+                              onPressed: () => context.push(PostsScreen.routeName),
+                              child: const Text('Posts'),
+                            ),
+                            ElevatedButton(
+                              onPressed: () => context.push(TestScreen.routeName),
                               child: const Text('TEST EasyChat'),
                             ),
                           ],
