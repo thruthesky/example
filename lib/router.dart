@@ -2,7 +2,7 @@ import 'package:example/screens/chat/chat.room_list.screen.dart';
 import 'package:example/screens/home/home.screen.dart';
 import 'package:example/screens/login/login.screen.dart';
 import 'package:example/screens/menu/menu.screen.dart';
-import 'package:example/screens/posts/posts_screen.dart';
+import 'package:example/screens/forum/post_list.screen.dart';
 import 'package:example/screens/profile/profile.screen.dart';
 import 'package:example/screens/test/test.screen.dart';
 import 'package:example/screens/user_list/user.list.screen.dart';
@@ -51,8 +51,8 @@ final router = GoRouter(
       builder: (context, state) => const CategoriesScreen(),
     ),
     GoRoute(
-      path: PostsScreen.routeName,
-      builder: (context, state) => const PostsScreen(),
+      path: PostListScreen.routeName,
+      builder: (context, state) => const PostListScreen(),
     ),
   ],
 );
