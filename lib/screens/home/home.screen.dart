@@ -28,7 +28,7 @@ class _FriendScreenState extends State<FriendScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text("Home"),
+        title: const Text("Example Home"),
         actions: [
           IconButton(
             icon: const Icon(Icons.menu),
