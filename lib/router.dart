@@ -1,4 +1,5 @@
 import 'package:example/screens/chat/chat.room_list.screen.dart';
+import 'package:example/screens/forum/forum_list.screen.dart';
 import 'package:example/screens/home/home.screen.dart';
 import 'package:example/screens/login/login.screen.dart';
 import 'package:example/screens/menu/menu.screen.dart';
@@ -53,6 +54,10 @@ final router = GoRouter(
     GoRoute(
       path: PostListScreen.routeName,
       builder: (context, state) => const PostListScreen(),
+    ),
+    GoRoute(
+      path: ForumListScreen.routeName,
+      builder: (context, state) => const ForumListScreen(),
     ),
   ],
 );

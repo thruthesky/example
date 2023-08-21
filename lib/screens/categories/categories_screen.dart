@@ -29,8 +29,9 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             onPressed: () {
               CategoryService.instance.showCreateCategoryDialog(
                 context,
-                success: (val) {
+                success: (category) {
                   Navigator.pop(context);
+                  CategoryService.instance.showCategoryDialog(context, category);
                 },
               );
             },
