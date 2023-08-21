@@ -6,11 +6,10 @@ class PostListScreen extends StatefulWidget {
   static const String routeName = '/post_list';
   const PostListScreen({
     super.key,
-    this.user,
-    // required this.category,
+    this.categoryId,
   });
-  final User? user;
-  // final Category category;
+
+  final String? categoryId;
 
   @override
   State<PostListScreen> createState() => _PostListScreenState();
@@ -34,7 +33,7 @@ class _PostListScreenState extends State<PostListScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text("Post List"),
+        title: Text(widget.categoryId ?? "Post List"),
         actions: [
           IconButton(
             icon: const Icon(Icons.add),
@@ -52,12 +51,11 @@ class _PostListScreenState extends State<PostListScreen> {
             icon: const Icon(Icons.settings),
             itemBuilder: (context) {
               return [
-                // TODO is this official way to check if Admin?
-                // if (UserService.instance.isAdmin)
-                const PopupMenuItem(
-                  value: "category",
-                  child: Text("Category Settings"),
-                ),
+                if (UserService.instance.isAdmin)
+                  const PopupMenuItem(
+                    value: "category",
+                    child: Text("Category Settings"),
+                  ),
                 const PopupMenuItem(
                   value: "adjust_text_size",
                   child: Text("Adjust text size"),

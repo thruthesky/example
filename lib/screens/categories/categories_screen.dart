@@ -27,11 +27,11 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           IconButton(
             icon: const Icon(Icons.add),
             onPressed: () {
-              CategoryService.instance.showCreateCategoryDialog(
+              CategoryService.instance.showCreateDialog(
                 context,
                 success: (category) {
                   Navigator.pop(context);
-                  CategoryService.instance.showCategoryDialog(context, category);
+                  CategoryService.instance.showUpdateDialog(context, category);
                 },
               );
             },
