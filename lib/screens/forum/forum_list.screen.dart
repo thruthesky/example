@@ -2,9 +2,9 @@ import 'package:fireflutter/fireflutter.dart';
 import 'package:flutter/material.dart';
 
 /// TODO give example of making own using route
-class PostListScreen extends StatefulWidget {
-  static const String routeName = '/post_list';
-  const PostListScreen({
+class ForumListScreen extends StatefulWidget {
+  static const String routeName = '/forum_list';
+  const ForumListScreen({
     super.key,
     this.user,
     // required this.category,
@@ -13,11 +13,11 @@ class PostListScreen extends StatefulWidget {
   // final Category category;
 
   @override
-  State<PostListScreen> createState() => _PostListScreenState();
+  State<ForumListScreen> createState() => _ForumListScreenState();
 }
 
-class _PostListScreenState extends State<PostListScreen> {
-  // final PostListViewController controller = PostListViewController();
+class _ForumListScreenState extends State<ForumListScreen> {
+  // final ForumListViewController controller = ForumListViewController();
 
   @override
   void initState() {
@@ -34,14 +34,14 @@ class _PostListScreenState extends State<PostListScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text("Post List"),
+        title: const Text("Forums"),
         actions: [
           IconButton(
             icon: const Icon(Icons.add),
             onPressed: () {
               // PostService.instance.showCreatePostDialog(
+              //   // TODO category
               //   context,
-              //   category: ca,
               //   success: (val) {
               //     Navigator.pop(context);
               //   },
@@ -77,9 +77,9 @@ class _PostListScreenState extends State<PostListScreen> {
           )
         ],
       ),
-      // body:  PostListView(
-      //     // controller: controller,
-      //     ),
+      body: const CategoryListView(
+          // controller: controller,
+          ),
     );
   }
 }
