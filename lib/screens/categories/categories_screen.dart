@@ -38,7 +38,11 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           ),
         ],
       ),
-      body: const CategoryListView(),
+      body: CategoryListView(
+        onTap: (category) {
+          CategoryService.instance.showUpdateDialog(context, category);
+        },
+      ),
     );
   }
 }
