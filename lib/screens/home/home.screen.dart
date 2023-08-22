@@ -1,17 +1,15 @@
-import 'package:example/screens/categories/categories_screen.dart';
 import 'package:example/screens/chat/chat.room_list.screen.dart';
 import 'package:example/screens/chat/open_rooms.screen.dart';
 import 'package:example/screens/forum/forum_list.screen.dart';
 import 'package:example/screens/login/login.screen.dart';
 import 'package:example/screens/menu/menu.screen.dart';
-import 'package:example/screens/forum/post_list.screen.dart';
 import 'package:example/screens/profile/profile.screen.dart';
 import 'package:example/screens/test/test.screen.dart';
 import 'package:example/screens/user_list/user.list.screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:fireflutter/fireflutter.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class FriendScreen extends StatefulWidget {
   static const String routeName = '/';
@@ -26,6 +24,58 @@ class FriendScreen extends StatefulWidget {
 class _FriendScreenState extends State<FriendScreen> {
   @override
   Widget build(BuildContext context) {
+    if (FirebaseAuth.instance.currentUser == null) {
+      final auth = FirebaseAuth.instance;
+      final emailController = TextEditingController();
+      final passwordController = TextEditingController();
+      return Scaffold(
+        body: SafeArea(
+          child: Column(
+            children: [
+              const Text("Please, login"),
+              TextField(
+                controller: emailController,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Email',
+                ),
+              ),
+              TextField(
+                controller: passwordController,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Password',
+                ),
+              ),
+              Row(
+                children: [
+                  ElevatedButton(
+                    onPressed: () async {
+                      await auth.createUserWithEmailAndPassword(
+                        email: emailController.text,
+                        password: passwordController.text,
+                      );
+                    },
+                    child: const Text("Register"),
+                  ),
+                  const Spacer(),
+                  ElevatedButton(
+                    onPressed: () async {
+                      await auth.signInWithEmailAndPassword(
+                        email: emailController.text,
+                        password: passwordController.text,
+                      );
+                      setState(() {});
+                    },
+                    child: const Text("Login"),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
+    }
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -57,12 +107,12 @@ class _FriendScreenState extends State<FriendScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               /// 사용자 문서.
+              ///
               UserDoc(
                 builder: (user) {
                   return Column(
                     children: [
                       Text("Hello, ${user.displayName}! (uid: ${user.uid})"),
-                      // Text(user.toString()),
                       ElevatedButton(
                         onPressed: UserService.instance.signOut,
                         child: const Text('Logout'),
@@ -146,28 +196,44 @@ class _FriendScreenState extends State<FriendScreen> {
                               child: const Text('Open Room List'),
                             ),
                             ElevatedButton(
-                              onPressed: () => context.push(CategoriesScreen.routeName),
                               child: const Text('Categories'),
+                              onPressed: () => CategoryService.instance.showListDialog(
+                                context,
+                                onTapCategory: (category) =>
+                                    CategoryService.instance.showUpdateDialog(context, category),
+                              ),
                             ),
                             Wrap(
                               children: [
                                 ElevatedButton(
-                                  onPressed: () => context.push(PostListScreen.routeName),
                                   child: const Text('All Post List'),
+                                  onPressed: () => showGeneralDialog(
+                                    context: context,
+                                    pageBuilder: (context, _, __) {
+                                      return const PostListDialog(title: "All Posts");
+                                    },
+                                  ),
                                 ),
                                 ElevatedButton(
+                                  child: const Text('QnA'),
                                   onPressed: () => showGeneralDialog(
                                     context: context,
                                     pageBuilder: (context, _, __) {
                                       return const PostListDialog(categoryId: 'qna');
                                     },
                                   ),
-                                  child: const Text('QnA'),
                                 ),
                                 ElevatedButton(
-                                  onPressed: () =>
-                                      context.push(PostListScreen.routeName, extra: {'categoryId': 'discussion'}),
+                                  // onPressed: () =>
+                                  //     context.push(PostListScreen.routeName, extra: {'categoryId': 'discussion'}),
+                                  // child: const Text('Discussion'),
                                   child: const Text('Discussion'),
+                                  onPressed: () => showGeneralDialog(
+                                    context: context,
+                                    pageBuilder: (context, _, __) {
+                                      return const PostListDialog(categoryId: 'discussion');
+                                    },
+                                  ),
                                 ),
                               ],
                             ),
@@ -185,53 +251,53 @@ class _FriendScreenState extends State<FriendScreen> {
                     ],
                   );
                 },
-                notLoggedInBuilder: () {
-                  final auth = FirebaseAuth.instance;
-                  final emailController = TextEditingController();
-                  final passwordController = TextEditingController();
-                  return Column(
-                    children: [
-                      const Text("Please, login"),
-                      TextField(
-                        controller: emailController,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Email',
-                        ),
-                      ),
-                      TextField(
-                        controller: passwordController,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Password',
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          ElevatedButton(
-                            onPressed: () async {
-                              await auth.createUserWithEmailAndPassword(
-                                email: emailController.text,
-                                password: passwordController.text,
-                              );
-                            },
-                            child: const Text("Register"),
-                          ),
-                          const Spacer(),
-                          ElevatedButton(
-                            onPressed: () async {
-                              await auth.signInWithEmailAndPassword(
-                                email: emailController.text,
-                                password: passwordController.text,
-                              );
-                            },
-                            child: const Text("Login"),
-                          ),
-                        ],
-                      ),
-                    ],
-                  );
-                },
+                // notLoggedInBuilder: () {
+                //   final auth = FirebaseAuth.instance;
+                //   final emailController = TextEditingController();
+                //   final passwordController = TextEditingController();
+                //   return Column(
+                //     children: [
+                //       const Text("Please, login"),
+                //       TextField(
+                //         controller: emailController,
+                //         decoration: const InputDecoration(
+                //           border: OutlineInputBorder(),
+                //           labelText: 'Email',
+                //         ),
+                //       ),
+                //       TextField(
+                //         controller: passwordController,
+                //         decoration: const InputDecoration(
+                //           border: OutlineInputBorder(),
+                //           labelText: 'Password',
+                //         ),
+                //       ),
+                //       Row(
+                //         children: [
+                //           ElevatedButton(
+                //             onPressed: () async {
+                //               await auth.createUserWithEmailAndPassword(
+                //                 email: emailController.text,
+                //                 password: passwordController.text,
+                //               );
+                //             },
+                //             child: const Text("Register"),
+                //           ),
+                //           const Spacer(),
+                //           ElevatedButton(
+                //             onPressed: () async {
+                //               await auth.signInWithEmailAndPassword(
+                //                 email: emailController.text,
+                //                 password: passwordController.text,
+                //               );
+                //             },
+                //             child: const Text("Login"),
+                //           ),
+                //         ],
+                //       ),
+                //     ],
+                //   );
+                // },
                 documentNotExistBuilder: () {
                   const str = "You are logged in, but your document does not exist. I am going to CREATE it !!";
                   UserService.instance.create();
