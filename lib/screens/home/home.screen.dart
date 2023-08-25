@@ -23,6 +23,11 @@ class FriendScreen extends StatefulWidget {
 
 class _FriendScreenState extends State<FriendScreen> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     if (FirebaseAuth.instance.currentUser == null) {
       final auth = FirebaseAuth.instance;
