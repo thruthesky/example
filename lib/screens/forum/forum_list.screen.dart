@@ -52,7 +52,6 @@ class _ForumListScreenState extends State<ForumListScreen> {
             icon: const Icon(Icons.settings),
             itemBuilder: (context) {
               return [
-                // TODO is this official way to check if Admin?
                 // if (UserService.instance.isAdmin)
                 const PopupMenuItem(
                   value: "category",
