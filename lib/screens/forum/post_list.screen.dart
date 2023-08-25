@@ -65,7 +65,7 @@ class _PostListScreenState extends State<PostListScreen> {
             onSelected: (value) {
               switch (value) {
                 case "category":
-                  // CategoryService.instance.showCategoryDialog(context, 'discussion')
+                  CategoryService.instance.showListDialog(context);
                   break;
                 case "adjust_te":
                   // context.push('/adjust_text_size');
@@ -75,9 +75,15 @@ class _PostListScreenState extends State<PostListScreen> {
           )
         ],
       ),
-      // body:  PostListView(
-      //     // controller: controller,
-      //     ),
+      // body: FutureBuilder(
+      //   future: CategoryService.instance.get(widget.categoryId!),
+      //   builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+      //     // final Category category = ;
+      //     // return PostListView(
+      //     //   category: category,
+      //     // );
+      //   },
+      // ),
     );
   }
 }

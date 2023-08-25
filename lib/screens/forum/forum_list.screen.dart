@@ -66,7 +66,7 @@ class _ForumListScreenState extends State<ForumListScreen> {
             onSelected: (value) {
               switch (value) {
                 case "category":
-                  // CategoryService.instance.showCategoryDialog(context, 'discussion')
+                  CategoryService.instance.showListDialog(context);
                   break;
                 case "adjust_te":
                   // context.push('/adjust_text_size');
