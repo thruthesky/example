@@ -25,6 +25,10 @@ class _FriendScreenState extends State<FriendScreen> {
   @override
   void initState() {
     super.initState();
+
+    UserService.instance.documentChanges.listen((user) {
+      if (user != null) {}
+    });
   }
 
   @override
@@ -123,21 +127,25 @@ class _FriendScreenState extends State<FriendScreen> {
                         child: const Text('Logout'),
                       ),
                       const SizedBox(height: 20),
-                      UserProfileAvatar(
-                        user: user,
-                        size: 120,
-                        upload: true,
-                        delete: true,
-                      ),
-                      const SizedBox(height: 20),
-                      UserAvatar(
-                        user: user,
-                        size: 60,
-                      ),
-                      const SizedBox(height: 20),
-                      UserAvatar(
-                        user: user,
-                        size: 30,
+                      Wrap(
+                        children: [
+                          UserProfileAvatar(
+                            user: user,
+                            size: 120,
+                            upload: true,
+                            delete: true,
+                          ),
+                          const SizedBox(height: 20),
+                          UserAvatar(
+                            user: user,
+                            size: 60,
+                          ),
+                          const SizedBox(height: 20),
+                          UserAvatar(
+                            user: user,
+                            size: 30,
+                          ),
+                        ],
                       ),
                       const SizedBox(height: 20),
                       StatefulBuilder(builder: (context, setState) {
@@ -162,7 +170,11 @@ class _FriendScreenState extends State<FriendScreen> {
                             ),
                             ElevatedButton(
                               onPressed: () => context.push(ChatRoomListScren.routeName),
-                              child: const Text('Open EasyChat Room List'),
+                              child: const Text('Go To - My Room List'),
+                            ),
+                            ElevatedButton(
+                              onPressed: () => context.push(OpenRoomsScreen.routeName),
+                              child: const Text('Go To - Open Group Chat List'),
                             ),
                             ElevatedButton(
                               onPressed: () => context.push(UserListScren.routeName),
@@ -195,10 +207,6 @@ class _FriendScreenState extends State<FriendScreen> {
                               onPressed: () =>
                                   Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ProfileScreen())),
                               child: const Text('Profile'),
-                            ),
-                            ElevatedButton(
-                              onPressed: () => context.push(OpenRoomsScreen.routeName),
-                              child: const Text('Open Room List'),
                             ),
                             ElevatedButton(
                               child: const Text('Categories'),
