@@ -152,21 +152,27 @@ class _FriendScreenState extends State<FriendScreen> {
                         final nameController = TextEditingController(text: user.name);
                         return Column(
                           children: [
-                            TextField(
-                              controller: nameController,
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                                labelText: 'Name',
-                              ),
-                            ),
-                            ElevatedButton(
-                              onPressed: () async {
-                                await UserService.instance.update(
-                                  name: nameController.text,
-                                );
-                                setState(() {});
-                              },
-                              child: const Text("Update"),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: TextField(
+                                    controller: nameController,
+                                    decoration: const InputDecoration(
+                                      border: OutlineInputBorder(),
+                                      labelText: 'Name',
+                                    ),
+                                  ),
+                                ),
+                                ElevatedButton(
+                                  onPressed: () async {
+                                    await UserService.instance.update(
+                                      name: nameController.text,
+                                    );
+                                    setState(() {});
+                                  },
+                                  child: const Text("Update"),
+                                ),
+                              ],
                             ),
                             ElevatedButton(
                               onPressed: () => context.push(ChatRoomListScren.routeName),
