@@ -31,7 +31,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                 context,
                 success: (category) {
                   Navigator.pop(context);
-                  CategoryService.instance.showUpdateDialog(context, category);
+                  CategoryService.instance.showUpdateDialog(context, category.id);
                 },
               );
             },
@@ -40,7 +40,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
       ),
       body: CategoryListView(
         onTap: (category) {
-          CategoryService.instance.showUpdateDialog(context, category);
+          CategoryService.instance.showUpdateDialog(context, category.id);
         },
       ),
     );

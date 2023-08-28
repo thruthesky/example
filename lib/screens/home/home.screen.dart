@@ -168,7 +168,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               onPressed: () => CategoryService.instance.showListDialog(
                                 context,
                                 onTapCategory: (category) =>
-                                    CategoryService.instance.showUpdateDialog(context, category),
+                                    CategoryService.instance.showUpdateDialog(context, category.id),
                               ),
                             ),
                             Wrap(
