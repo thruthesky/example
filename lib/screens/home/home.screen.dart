@@ -11,17 +11,17 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:fireflutter/fireflutter.dart';
 
-class FriendScreen extends StatefulWidget {
+class HomeScreen extends StatefulWidget {
   static const String routeName = '/';
-  const FriendScreen({
+  const HomeScreen({
     super.key,
   });
 
   @override
-  State<FriendScreen> createState() => _FriendScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _FriendScreenState extends State<FriendScreen> {
+class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
@@ -33,58 +33,6 @@ class _FriendScreenState extends State<FriendScreen> {
 
   @override
   Widget build(BuildContext context) {
-    if (FirebaseAuth.instance.currentUser == null) {
-      final auth = FirebaseAuth.instance;
-      final emailController = TextEditingController();
-      final passwordController = TextEditingController();
-      return Scaffold(
-        body: SafeArea(
-          child: Column(
-            children: [
-              const Text("Please, login"),
-              TextField(
-                controller: emailController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Email',
-                ),
-              ),
-              TextField(
-                controller: passwordController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Password',
-                ),
-              ),
-              Row(
-                children: [
-                  ElevatedButton(
-                    onPressed: () async {
-                      await auth.createUserWithEmailAndPassword(
-                        email: emailController.text,
-                        password: passwordController.text,
-                      );
-                    },
-                    child: const Text("Register"),
-                  ),
-                  const Spacer(),
-                  ElevatedButton(
-                    onPressed: () async {
-                      await auth.signInWithEmailAndPassword(
-                        email: emailController.text,
-                        password: passwordController.text,
-                      );
-                      setState(() {});
-                    },
-                    child: const Text("Login"),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      );
-    }
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -118,6 +66,7 @@ class _FriendScreenState extends State<FriendScreen> {
               /// 사용자 문서.
               ///
               UserDoc(
+                live: true,
                 builder: (user) {
                   return Column(
                     children: [
@@ -270,55 +219,56 @@ class _FriendScreenState extends State<FriendScreen> {
                     ],
                   );
                 },
-                // notLoggedInBuilder: () {
-                //   final auth = FirebaseAuth.instance;
-                //   final emailController = TextEditingController();
-                //   final passwordController = TextEditingController();
-                //   return Column(
-                //     children: [
-                //       const Text("Please, login"),
-                //       TextField(
-                //         controller: emailController,
-                //         decoration: const InputDecoration(
-                //           border: OutlineInputBorder(),
-                //           labelText: 'Email',
-                //         ),
-                //       ),
-                //       TextField(
-                //         controller: passwordController,
-                //         decoration: const InputDecoration(
-                //           border: OutlineInputBorder(),
-                //           labelText: 'Password',
-                //         ),
-                //       ),
-                //       Row(
-                //         children: [
-                //           ElevatedButton(
-                //             onPressed: () async {
-                //               await auth.createUserWithEmailAndPassword(
-                //                 email: emailController.text,
-                //                 password: passwordController.text,
-                //               );
-                //             },
-                //             child: const Text("Register"),
-                //           ),
-                //           const Spacer(),
-                //           ElevatedButton(
-                //             onPressed: () async {
-                //               await auth.signInWithEmailAndPassword(
-                //                 email: emailController.text,
-                //                 password: passwordController.text,
-                //               );
-                //             },
-                //             child: const Text("Login"),
-                //           ),
-                //         ],
-                //       ),
-                //     ],
-                //   );
-                // },
+                notLoggedInBuilder: () {
+                  final auth = FirebaseAuth.instance;
+                  final emailController = TextEditingController();
+                  final passwordController = TextEditingController();
+                  return Column(
+                    children: [
+                      const Text("Please, login"),
+                      TextField(
+                        controller: emailController,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Email',
+                        ),
+                      ),
+                      TextField(
+                        controller: passwordController,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Password',
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          ElevatedButton(
+                            onPressed: () async {
+                              await auth.createUserWithEmailAndPassword(
+                                email: emailController.text,
+                                password: passwordController.text,
+                              );
+                            },
+                            child: const Text("Register"),
+                          ),
+                          const Spacer(),
+                          ElevatedButton(
+                            onPressed: () async {
+                              await auth.signInWithEmailAndPassword(
+                                email: emailController.text,
+                                password: passwordController.text,
+                              );
+                            },
+                            child: const Text("Login"),
+                          ),
+                        ],
+                      ),
+                    ],
+                  );
+                },
                 documentNotExistBuilder: () {
                   const str = "You are logged in, but your document does not exist. I am going to CREATE it !!";
+                  print(str);
                   UserService.instance.create();
                   return const Text(str);
                 },

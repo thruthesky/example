@@ -13,11 +13,11 @@ import 'screens/categories/categories_screen.dart';
 import 'screens/chat/open_rooms.screen.dart';
 
 final router = GoRouter(
-  // initialLocation: '/',
+  initialLocation: '/',
   routes: [
     GoRoute(
-      path: FriendScreen.routeName,
-      builder: (context, state) => const FriendScreen(),
+      path: HomeScreen.routeName,
+      builder: (context, state) => const HomeScreen(),
     ),
     GoRoute(
       path: MenuScreen.routeName,
