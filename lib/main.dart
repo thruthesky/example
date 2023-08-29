@@ -1,5 +1,6 @@
 import 'package:example/firebase_options.dart';
 import 'package:example/router.dart';
+import 'package:example/services/app.service.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -15,6 +16,7 @@ class FireFlutterExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppService.instance.init();
     return MaterialApp.router(
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
