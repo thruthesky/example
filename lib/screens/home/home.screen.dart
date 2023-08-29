@@ -114,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 ElevatedButton(
                                   onPressed: () async {
-                                    await UserService.instance.update(
+                                    await user.update(
                                       name: nameController.text,
                                     );
                                     setState(() {});
