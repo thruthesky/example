@@ -18,7 +18,6 @@ class _UserListScrenState extends State<UserListScren> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('User List'),
       ),
-      // TODO User List View
       body: Column(
         children: [
           Padding(

@@ -1,7 +1,6 @@
 import 'package:fireflutter/fireflutter.dart';
 import 'package:flutter/material.dart';
 
-/// TODO give example of making own using route
 class ForumListScreen extends StatefulWidget {
   static const String routeName = '/forum_list';
   const ForumListScreen({
@@ -40,7 +39,6 @@ class _ForumListScreenState extends State<ForumListScreen> {
             icon: const Icon(Icons.add),
             onPressed: () {
               // PostService.instance.showCreatePostDialog(
-              //   // TODO category
               //   context,
               //   success: (val) {
               //     Navigator.pop(context);
