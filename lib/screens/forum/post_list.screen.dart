@@ -1,7 +1,6 @@
 import 'package:fireflutter/fireflutter.dart';
 import 'package:flutter/material.dart';
 
-/// TODO give example of making own using route
 class PostListScreen extends StatefulWidget {
   static const String routeName = '/post_list';
   const PostListScreen({
