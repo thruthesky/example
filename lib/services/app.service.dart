@@ -1,4 +1,5 @@
 import 'package:example/functions/functions.dart';
+import 'package:example/router.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:fireflutter/fireflutter.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,8 @@ import 'package:flutter/material.dart';
 class AppService {
   static AppService? _instance;
   static AppService get instance => _instance ??= AppService();
+
+  BuildContext get context => router.routerDelegate.navigatorKey.currentContext!;
 
   AppService() {
     // init here
@@ -43,12 +46,12 @@ class AppService {
   void init() {}
 
   onForegroundMessage(RemoteMessage message) {
-    // print(message);
+    print(message);
     // this will triggered while the app is opened
     // If the message has data, then do some extra work based on the data.
-    // if (UserService.instance.signedIn && UserService.instance.uid == message.data['senderUid']) {
-    //   return;
-    // }
+    if (UserService.instance.signedIn && UserService.instance.uid == message.data['senderUid']) {
+      return;
+    }
 
     // if (message.data['type'] == 'chat') {
     //   // determin if the room is open dont send push notification
@@ -65,42 +68,41 @@ class AppService {
     //   }
     // }
 
-    // String title = message.notification!.title ?? '';
-    // String body = message.notification!.body ?? '';
+    String title = message.notification!.title ?? '';
+    String body = message.notification!.body ?? '';
 
-    // if (title.length > 64) title = title.substring(0, 64);
-    // if (body.length > 128) body = body.substring(0, 128);
+    if (title.length > 64) title = title.substring(0, 64);
+    if (body.length > 128) body = body.substring(0, 128);
 
-    // snackbar(
-    //   title: title,
-    //   message: body,
-    //   duration: 12,
-    //   onTap: (x) {
-    //     onTapMessage(message);
-    //     x();
-    //   },
-    // );
+    tapSnackbar(
+      context: context,
+      title: title,
+      message: body,
+      onTap: (x) {
+        onTapMessage(message);
+        x();
+      },
+    );
   }
 
   onTapMessage(message) async {
     // Handle the message here
-    // print("onTapMessage");
-    // print(message);
+    print("onTapMessage");
+    print(message);
 
-    // print(message);
     /**
      * return if the the sender is also the current loggedIn user.
      */
-    // if (UserService.instance.signedIn && message.data['senderUid'] == UserService.instance.uid) {
-    //   return;
-    // }
+    if (UserService.instance.signedIn && message.data['senderUid'] == UserService.instance.uid) {
+      return;
+    }
 
-    // /**
-    //    * If the type is post then move it to a specific post.
-    //    */
-    // if (message.data['type'] == 'post') {
-    //   PostViewScreen.push(message.data['id']);
-    // }
+    /**
+       * If the type is post then move it to a specific post.
+       */
+    if (message.data['type'] == 'post') {
+      PostService.instance.showPostViewDialog(context, await Post.get(message.data['id']));
+    }
 
     // /**
     //    * If the type is chat then move it to chat room.
