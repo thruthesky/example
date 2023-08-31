@@ -19,6 +19,7 @@ dependencies:
     path: ../..
 
   go_router: ^10.0.0
+  firebase_messaging: ^14.6.7
 
 dev_dependencies:
   flutter_test:
