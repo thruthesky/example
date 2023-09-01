@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:example/screens/chat/chat.room_list.screen.dart';
 import 'package:example/screens/chat/open_rooms.screen.dart';
 import 'package:example/screens/forum/forum_list.screen.dart';
@@ -267,12 +265,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   );
-                },
-                documentNotExistBuilder: () {
-                  const str = "You are logged in, but your document does not exist. I am going to CREATE it !!";
-                  log(str);
-                  UserService.instance.create();
-                  return const Text(str);
                 },
               ),
             ],

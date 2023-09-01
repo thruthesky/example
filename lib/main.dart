@@ -1,5 +1,6 @@
 import 'package:example/firebase_options.dart';
 import 'package:example/router.dart';
+import 'package:fireflutter/fireflutter.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -10,8 +11,21 @@ void main() async {
   runApp(const FireFlutterExample());
 }
 
-class FireFlutterExample extends StatelessWidget {
+class FireFlutterExample extends StatefulWidget {
   const FireFlutterExample({super.key});
+
+  @override
+  State<FireFlutterExample> createState() => _FireFlutterExampleState();
+}
+
+class _FireFlutterExampleState extends State<FireFlutterExample> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      FireFlutterService.instance.init(context: router.routerDelegate.navigatorKey.currentContext!);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
