@@ -6,46 +6,17 @@ import 'package:flutter/material.dart';
 
 class AppService {
   static AppService? _instance;
-  static AppService get instance => _instance ??= AppService();
+  static AppService get instance => _instance ??= AppService._();
 
   BuildContext get context => router.routerDelegate.navigatorKey.currentContext!;
 
-  AppService() {
-    // init here
-    MessagingService.instance.init(
-      // while the app is close and notification arrive you can use this to do small work
-      // example are changing the badge count or informing backend.
-      onBackgroundMessage: onTerminatedMessage,
-
-      ///
-      onForegroundMessage: (RemoteMessage message) {
-        onForegroundMessage(message);
-      },
-      onMessageOpenedFromTerminated: (message) {
-        // this will triggered when the notification on tray was tap while the app is closed
-        // if you change screen right after the app is open it display only white screen.
-        WidgetsBinding.instance.addPostFrameCallback((duration) {
-          onTapMessage(message);
-        });
-      },
-      // this will triggered when the notification on tray was tap while the app is open but in background state.
-      onMessageOpenedFromBackground: (message) {
-        onTapMessage(message);
-      },
-      onNotificationPermissionDenied: () {
-        // print('onNotificationPermissionDenied()');
-      },
-      onNotificationPermissionNotDetermined: () {
-        // print('onNotificationPermissionNotDetermined()');
-      },
-    );
-  }
+  AppService._();
 
   /// For instantianciating the instance. Just call it whenever you need it.
   /// It will only instantiate the instance once.
   void init() {}
 
-  onForegroundMessage(RemoteMessage message) {
+  displayForegroundMessage(RemoteMessage message) {
     print(message);
     // this will triggered while the app is opened
     // If the message has data, then do some extra work based on the data.
@@ -78,15 +49,15 @@ class AppService {
       title: title,
       message: body,
       onTap: (x) {
-        onTapMessage(message);
+        onMessageTapped(message);
         x();
       },
     );
   }
 
-  onTapMessage(message) async {
+  onMessageTapped(RemoteMessage message) async {
     // Handle the message here
-    print("onTapMessage");
+    print("onMessageTapped");
     print(message);
 
     /**
