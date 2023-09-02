@@ -211,7 +211,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             ElevatedButton(
                               onPressed: () => context.push(TestScreen.routeName),
-                              child: const Text('TEST EasyChat'),
+                              child: const Text('Unit Test'),
                             ),
                           ],
                         );
