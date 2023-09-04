@@ -1,4 +1,3 @@
-import 'package:example/functions/functions.dart';
 import 'package:example/router.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:fireflutter/fireflutter.dart';
