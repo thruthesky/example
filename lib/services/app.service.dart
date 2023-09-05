@@ -23,20 +23,13 @@ class AppService {
       return;
     }
 
-    // if (message.data['type'] == 'chat') {
-    //   // determin if the room is open dont send push notification
-    //   // return if the message is coming from current chat room and the user is on the chat room.
-    //   if (message.data['senderUid'] == ChatService.instance.otherUser?.uid) {
-    //     return;
-    //   }
-
-    //   //
-    //   if (Config.isMobile) {
-    //     if (message.data['badge'] != null && message.data['badge'] != '') {
-    //       FlutterAppBadger.updateBadgeCount(int.parse(message.data['badge']));
-    //     }
-    //   }
-    // }
+    if (message.data['type'] == 'chat') {
+      // determined if the room is open dont send push notification
+      // return if the message is coming from current chat room and the user is on the chat room.
+      // if (message.data['senderUid'] == ChatService.instance.otherUser?.uid) {
+      //   return;
+      // }
+    }
 
     String title = message.notification!.title ?? '';
     String body = message.notification!.body ?? '';
