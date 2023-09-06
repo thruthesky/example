@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:example/router.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:fireflutter/fireflutter.dart';
@@ -16,7 +18,7 @@ class AppService {
   void init() {}
 
   displayForegroundMessage(RemoteMessage message) {
-    print(message);
+    log(message.toString());
     // this will triggered while the app is opened
     // If the message has data, then do some extra work based on the data.
     if (UserService.instance.signedIn && UserService.instance.uid == message.data['senderUid']) {
@@ -49,8 +51,8 @@ class AppService {
 
   onMessageTapped(RemoteMessage message) async {
     // Handle the message here
-    print("onMessageTapped");
-    print(message);
+    log("onMessageTapped");
+    log(message.toString());
 
     /**
      * return if the the sender is also the current loggedIn user.
