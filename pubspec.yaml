@@ -21,6 +21,11 @@ dependencies:
   go_router: ^10.0.0
   firebase_messaging: ^14.6.7
 
+  auth_buttons:
+    git:
+      url: https://github.com/thruthesky/flutter_auth_buttons
+      ref: cd366eecf31639198286de48af4efa9280f06c77
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
