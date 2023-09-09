@@ -9,7 +9,8 @@ class AppService {
   static AppService? _instance;
   static AppService get instance => _instance ??= AppService._();
 
-  BuildContext get context => router.routerDelegate.navigatorKey.currentContext!;
+  BuildContext get context =>
+      router.routerDelegate.navigatorKey.currentContext!;
 
   AppService._();
 
@@ -21,7 +22,8 @@ class AppService {
     log(message.toString());
     // this will triggered while the app is opened
     // If the message has data, then do some extra work based on the data.
-    if (UserService.instance.signedIn && UserService.instance.uid == message.data['senderUid']) {
+    if (UserService.instance.signedIn &&
+        UserService.instance.uid == message.data['senderUid']) {
       return;
     }
 
@@ -57,7 +59,8 @@ class AppService {
     /**
      * return if the the sender is also the current loggedIn user.
      */
-    if (UserService.instance.signedIn && message.data['senderUid'] == UserService.instance.uid) {
+    if (UserService.instance.signedIn &&
+        message.data['senderUid'] == UserService.instance.uid) {
       return;
     }
 
@@ -65,7 +68,8 @@ class AppService {
        * If the type is post then move it to a specific post.
        */
     if (message.data['type'] == 'post') {
-      PostService.instance.showPostViewDialog(context, await Post.get(message.data['id']));
+      PostService.instance
+          .showPostViewDialog(context, await Post.get(message.data['id']));
     }
 
     // /**

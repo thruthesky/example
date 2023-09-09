@@ -43,18 +43,21 @@ class _FireFlutterExampleState extends State<FireFlutterExample> {
       onNotificationPermissionDenied: () {
         toast(
           title: 'Permission Denied',
-          message: 'Please allow notification permission to receive push notifications.',
+          message:
+              'Please allow notification permission to receive push notifications.',
         );
       },
       onNotificationPermissionNotDetermined: () {
         toast(
           title: 'Permission Not Determined',
-          message: 'Please allow notification permission to receive push notifications.',
+          message:
+              'Please allow notification permission to receive push notifications.',
         );
       },
     );
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      FireFlutterService.instance.init(context: router.routerDelegate.navigatorKey.currentContext!);
+      FireFlutterService.instance
+          .init(context: router.routerDelegate.navigatorKey.currentContext!);
     });
   }
 

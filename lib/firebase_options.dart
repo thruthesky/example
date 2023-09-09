@@ -52,7 +52,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '817502397544',
     projectId: 'withcenter-test-2',
     authDomain: 'withcenter-test-2.firebaseapp.com',
-    databaseURL: 'https://withcenter-test-2-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL:
+        'https://withcenter-test-2-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'withcenter-test-2.appspot.com',
   );
 
@@ -61,7 +62,8 @@ class DefaultFirebaseOptions {
     appId: '1:817502397544:android:2bcb5d9a95e751422487dd',
     messagingSenderId: '817502397544',
     projectId: 'withcenter-test-2',
-    databaseURL: 'https://withcenter-test-2-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL:
+        'https://withcenter-test-2-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'withcenter-test-2.appspot.com',
   );
 
@@ -70,9 +72,11 @@ class DefaultFirebaseOptions {
     appId: '1:817502397544:ios:cdc39b3746a4ac0f2487dd',
     messagingSenderId: '817502397544',
     projectId: 'withcenter-test-2',
-    databaseURL: 'https://withcenter-test-2-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL:
+        'https://withcenter-test-2-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'withcenter-test-2.appspot.com',
-    androidClientId: '817502397544-0ojaqhcn44u9e46oor7h4iop111phb2i.apps.googleusercontent.com',
+    androidClientId:
+        '817502397544-0ojaqhcn44u9e46oor7h4iop111phb2i.apps.googleusercontent.com',
     iosBundleId: 'com.fireflutter.example',
   );
 }

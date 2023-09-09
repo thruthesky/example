@@ -53,7 +53,8 @@ final router = GoRouter(
     ),
     GoRoute(
       path: PostListScreen.routeName,
-      builder: (context, state) => PostListScreen(categoryId: (state.extra as Map)['categoryId'] as String?),
+      builder: (context, state) => PostListScreen(
+          categoryId: (state.extra as Map)['categoryId'] as String?),
     ),
     GoRoute(
       path: ForumListScreen.routeName,
