@@ -185,7 +185,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   onPressed: () => showGeneralDialog(
                                     context: context,
                                     pageBuilder: (context, _, __) {
-                                      return const PostListDialog(
+                                      return const PostListScreen(
                                           title: "All Posts");
                                     },
                                   ),
@@ -195,7 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   onPressed: () => showGeneralDialog(
                                     context: context,
                                     pageBuilder: (context, _, __) {
-                                      return const PostListDialog(
+                                      return const PostListScreen(
                                           categoryId: 'qna');
                                     },
                                   ),
@@ -208,7 +208,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   onPressed: () => showGeneralDialog(
                                     context: context,
                                     pageBuilder: (context, _, __) {
-                                      return const PostListDialog(
+                                      return const PostListScreen(
                                           categoryId: 'discussion');
                                     },
                                   ),

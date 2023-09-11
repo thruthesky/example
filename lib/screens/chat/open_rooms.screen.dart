@@ -19,7 +19,7 @@ class _OpenRoomsScreen extends State<OpenRoomsScreen> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Open Rooms'),
       ),
-      body: const ChatRoomOpenListView(),
+      body: const ChatRoomOpenGroupListView(),
     );
   }
 }
