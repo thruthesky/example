@@ -68,8 +68,8 @@ class AppService {
        * If the type is post then move it to a specific post.
        */
     if (message.data['type'] == 'post') {
-      PostService.instance
-          .showPostViewDialog(context, await Post.get(message.data['id']));
+      PostService.instance.showPostViewScreen(
+          context: context, post: await Post.get(message.data['id']));
     }
 
     // /**
