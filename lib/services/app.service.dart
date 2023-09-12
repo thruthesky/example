@@ -69,7 +69,7 @@ class AppService {
        */
     if (message.data['type'] == 'post') {
       PostService.instance
-          .showPostViewDialog(context, await Post.get(message.data['id']));
+          .showPostViewScreen(context: context, postId: message.data['id']);
     }
 
     // /**
