@@ -79,7 +79,7 @@ class _FireFlutterExampleState extends State<FireFlutterExample> {
       "id": "WARNING_CHANNEL",
       "name": "Warning push notifications",
       "description": "Warning push notifications channel settings",
-      "sound": "warning"
+      "sound": "warning",
     };
 
     try {
