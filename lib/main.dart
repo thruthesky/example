@@ -1,3 +1,6 @@
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:example/firebase_options.dart';
 import 'package:example/router.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -5,6 +8,7 @@ import 'package:fireflutter/fireflutter.dart';
 import 'package:example/services/app.service.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -59,6 +63,38 @@ class _FireFlutterExampleState extends State<FireFlutterExample> {
       FireFlutterService.instance
           .init(context: router.routerDelegate.navigatorKey.currentContext!);
     });
+    if (Platform.isAndroid) initNotificationChannel();
+  }
+
+  initNotificationChannel() async {
+    const MethodChannel channel =
+        MethodChannel('com.fireflutter.example/push_notification');
+    Map<String, String> channelMap1 = {
+      "id": "DEFAULT_CHANNEL",
+      "name": "Default push notifications",
+      "description": "Default push notifications channel settings",
+    };
+
+    Map<String, String> channelMap2 = {
+      "id": "WARNING_CHANNEL",
+      "name": "Warning push notifications",
+      "description": "Warning push notifications channel settings",
+      "sound": "warning",
+    };
+
+    try {
+      final res1 =
+          await channel.invokeMethod('createNotificationChannel', channelMap1);
+      log('Finished creating channel1');
+      log(res1.toString());
+      final res2 =
+          await channel.invokeMethod('createNotificationChannel', channelMap2);
+      log('Finished creating channel2');
+      log(res2.toString());
+    } on PlatformException catch (e) {
+      log('Error while creating channel"');
+      log(e.toString());
+    }
   }
 
   @override

@@ -22,7 +22,8 @@ class AppService {
     log(message.toString());
     // this will triggered while the app is opened
     // If the message has data, then do some extra work based on the data.
-    if (loggedIn && UserService.instance.uid == message.data['senderUid']) {
+    if (UserService.instance.loggedIn &&
+        UserService.instance.uid == message.data['senderUid']) {
       return;
     }
 
@@ -58,7 +59,8 @@ class AppService {
     /**
      * return if the the sender is also the current loggedIn user.
      */
-    if (loggedIn && message.data['senderUid'] == UserService.instance.uid) {
+    if (UserService.instance.loggedIn &&
+        message.data['senderUid'] == UserService.instance.uid) {
       return;
     }
 
