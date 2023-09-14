@@ -42,7 +42,7 @@ class _UserListScrenState extends State<UserListScren> {
           ),
           Expanded(
             child: UserListView(
-              searchText: '',
+              searchText: search.text,
               onTap: (user) async {
                 // chat room
                 ChatService.instance.showChatRoom(context: context, user: user);

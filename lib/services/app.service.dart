@@ -22,8 +22,7 @@ class AppService {
     log(message.toString());
     // this will triggered while the app is opened
     // If the message has data, then do some extra work based on the data.
-    if (UserService.instance.loggedIn &&
-        UserService.instance.uid == message.data['senderUid']) {
+    if (loggedIn && myUid == message.data['senderUid']) {
       return;
     }
 
@@ -72,12 +71,17 @@ class AppService {
           context: context, post: await Post.get(message.data['id']));
     }
 
-    // /**
-    //    * If the type is chat then move it to chat room.
-    //    */
-    // if (message.data['type'] == 'chat') {
-    //   // @thruthesky fixed at 2022-09-24
-    //   ChatRoomScreen.go(message.data['senderUid']);
-    // }
+    /**
+     * If the type is chat then move it to chat room.
+     */
+    if (message.data['type'] == 'chat') {
+      // ignore: use_build_context_synchronously
+      ChatService.instance.showChatRoom(
+        context: FireFlutterService.instance.context,
+        room: await Room.get(
+          message.data['id'],
+        ),
+      );
+    }
   }
 }
