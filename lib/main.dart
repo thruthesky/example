@@ -29,7 +29,7 @@ class _FireFlutterExampleState extends State<FireFlutterExample> {
   void initState() {
     super.initState();
     AppService.instance.init();
-    UserService.instance.init(adminUid: '...xxx...');
+    UserService.instance.init(adminUid: '');
     // init here
     MessagingService.instance.init(
       onBackgroundMessage: null,
