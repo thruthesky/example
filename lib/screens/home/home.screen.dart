@@ -1,6 +1,7 @@
 import 'package:example/screens/chat/chat.room_list.screen.dart';
 import 'package:example/screens/chat/open_rooms.screen.dart';
 import 'package:example/screens/forum/forum_list.screen.dart';
+import 'package:example/screens/forum/post_card_list.screen.dart';
 import 'package:example/screens/login/login.screen.dart';
 import 'package:example/screens/menu/menu.screen.dart';
 import 'package:example/screens/profile/profile.screen.dart';
@@ -98,8 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       const SizedBox(height: 20),
                       StatefulBuilder(builder: (context, setState) {
-                        final nameController =
-                            TextEditingController(text: user.name);
+                        final nameController = TextEditingController(text: user.name);
                         return Column(
                           children: [
                             Row(
@@ -125,18 +125,15 @@ class _HomeScreenState extends State<HomeScreen> {
                               ],
                             ),
                             ElevatedButton(
-                              onPressed: () =>
-                                  context.push(ChatRoomListScren.routeName),
+                              onPressed: () => context.push(ChatRoomListScren.routeName),
                               child: const Text('Go To - My Room List'),
                             ),
                             ElevatedButton(
-                              onPressed: () =>
-                                  context.push(OpenRoomsScreen.routeName),
+                              onPressed: () => context.push(OpenRoomsScreen.routeName),
                               child: const Text('Go To - Open Group Chat List'),
                             ),
                             ElevatedButton(
-                              onPressed: () =>
-                                  context.push(UserListScren.routeName),
+                              onPressed: () => context.push(UserListScren.routeName),
                               child: const Text('Open User List'),
                             ),
                             ElevatedButton(
@@ -163,19 +160,16 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: const Text('Open Example Chat Room'),
                             ),
                             ElevatedButton(
-                              onPressed: () => Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                      builder: (_) => const ProfileScreen())),
+                              onPressed: () =>
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ProfileScreen())),
                               child: const Text('Profile'),
                             ),
                             ElevatedButton(
                               child: const Text('Categories'),
-                              onPressed: () =>
-                                  CategoryService.instance.showListDialog(
+                              onPressed: () => CategoryService.instance.showListDialog(
                                 context,
-                                onTapCategory: (category) => CategoryService
-                                    .instance
-                                    .showUpdateDialog(context, category.id),
+                                onTapCategory: (category) =>
+                                    CategoryService.instance.showUpdateDialog(context, category.id),
                               ),
                             ),
                             Wrap(
@@ -185,8 +179,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   onPressed: () => showGeneralDialog(
                                     context: context,
                                     pageBuilder: (context, _, __) {
-                                      return const PostListScreen(
-                                          title: "All Posts");
+                                      return const PostListScreen(title: "All Posts");
                                     },
                                   ),
                                 ),
@@ -195,8 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   onPressed: () => showGeneralDialog(
                                     context: context,
                                     pageBuilder: (context, _, __) {
-                                      return const PostListScreen(
-                                          categoryId: 'qna');
+                                      return const PostListScreen(categoryId: 'qna');
                                     },
                                   ),
                                 ),
@@ -208,21 +200,21 @@ class _HomeScreenState extends State<HomeScreen> {
                                   onPressed: () => showGeneralDialog(
                                     context: context,
                                     pageBuilder: (context, _, __) {
-                                      return const PostListScreen(
-                                          categoryId: 'discussion');
+                                      return const PostListScreen(categoryId: 'discussion');
                                     },
                                   ),
                                 ),
+                                ElevatedButton(
+                                    child: const Text('Post Card List'),
+                                    onPressed: () => context.push(PostCardListScreen.routeName)),
                               ],
                             ),
                             ElevatedButton(
-                              onPressed: () =>
-                                  context.push(ForumListScreen.routeName),
+                              onPressed: () => context.push(ForumListScreen.routeName),
                               child: const Text('Forums List'),
                             ),
                             ElevatedButton(
-                              onPressed: () =>
-                                  context.push(TestScreen.routeName),
+                              onPressed: () => context.push(TestScreen.routeName),
                               child: const Text('Unit Test'),
                             ),
                           ],

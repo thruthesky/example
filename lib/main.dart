@@ -30,6 +30,10 @@ class _FireFlutterExampleState extends State<FireFlutterExample> {
     super.initState();
     AppService.instance.init();
     UserService.instance.init(adminUid: '');
+
+    PostService.instance.init(
+      enableSeenBy: true,
+    );
     // init here
     MessagingService.instance.init(
       onBackgroundMessage: null,
@@ -47,28 +51,24 @@ class _FireFlutterExampleState extends State<FireFlutterExample> {
       onNotificationPermissionDenied: () {
         toast(
           title: 'Permission Denied',
-          message:
-              'Please allow notification permission to receive push notifications.',
+          message: 'Please allow notification permission to receive push notifications.',
         );
       },
       onNotificationPermissionNotDetermined: () {
         toast(
           title: 'Permission Not Determined',
-          message:
-              'Please allow notification permission to receive push notifications.',
+          message: 'Please allow notification permission to receive push notifications.',
         );
       },
     );
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      FireFlutterService.instance
-          .init(context: router.routerDelegate.navigatorKey.currentContext!);
+      FireFlutterService.instance.init(context: router.routerDelegate.navigatorKey.currentContext!);
     });
     if (Platform.isAndroid) initNotificationChannel();
   }
 
   initNotificationChannel() async {
-    const MethodChannel channel =
-        MethodChannel('com.fireflutter.example/push_notification');
+    const MethodChannel channel = MethodChannel('com.fireflutter.example/push_notification');
     Map<String, String> channelMap1 = {
       "id": "DEFAULT_CHANNEL",
       "name": "Default push notifications",
@@ -83,12 +83,10 @@ class _FireFlutterExampleState extends State<FireFlutterExample> {
     };
 
     try {
-      final res1 =
-          await channel.invokeMethod('createNotificationChannel', channelMap1);
+      final res1 = await channel.invokeMethod('createNotificationChannel', channelMap1);
       log('Finished creating channel1');
       log(res1.toString());
-      final res2 =
-          await channel.invokeMethod('createNotificationChannel', channelMap2);
+      final res2 = await channel.invokeMethod('createNotificationChannel', channelMap2);
       log('Finished creating channel2');
       log(res2.toString());
     } on PlatformException catch (e) {
