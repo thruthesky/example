@@ -9,8 +9,7 @@ class AppService {
   static AppService? _instance;
   static AppService get instance => _instance ??= AppService._();
 
-  BuildContext get context =>
-      router.routerDelegate.navigatorKey.currentContext!;
+  BuildContext get context => router.routerDelegate.navigatorKey.currentContext!;
 
   AppService._();
 
@@ -58,8 +57,7 @@ class AppService {
     /**
      * return if the the sender is also the current loggedIn user.
      */
-    if (UserService.instance.loggedIn &&
-        message.data['senderUid'] == UserService.instance.uid) {
+    if (loggedIn && message.data['senderUid'] == myUid) {
       return;
     }
 
@@ -67,8 +65,7 @@ class AppService {
        * If the type is post then move it to a specific post.
        */
     if (message.data['type'] == 'post') {
-      PostService.instance.showPostViewScreen(
-          context: context, post: await Post.get(message.data['id']));
+      PostService.instance.showPostViewScreen(context: context, post: await Post.get(message.data['id']));
     }
 
     /**
