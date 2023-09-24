@@ -106,10 +106,7 @@ PODS:
     - FirebaseFirestore/AutodetectLeveldb (= 10.12.0)
   - FirebaseFirestore/AutodetectLeveldb (10.12.0):
     - FirebaseFirestore/Base
-    - FirebaseFirestore/WithLeveldb
   - FirebaseFirestore/Base (10.12.0)
-  - FirebaseFirestore/WithLeveldb (10.12.0):
-    - FirebaseFirestore/Base
   - FirebaseInstallations (10.14.0):
     - FirebaseCore (~> 10.0)
     - GoogleUtilities/Environment (~> 7.8)
@@ -338,7 +335,7 @@ SPEC CHECKSUMS:
   FirebaseCoreInternal: 950500ad8a08963657f6d8c67b579740c06d6aa1
   FirebaseDatabase: 6d998d7ef2c1723b3e798a85e61a7dc0504b1ea0
   FirebaseDynamicLinks: 1a387da899779e5ef34f4d6f8bdba882f90d0e67
-  FirebaseFirestore: 8d9dd05bb50e0891ebe4fdd9bd0f9b9d22ea5556
+  FirebaseFirestore: 161acf99d3da11c264625a151002bb4b518e7cc0
   FirebaseInstallations: f672b1eda64e6381c21d424a2f680a943fd83f3b
   FirebaseMessaging: bb2c4f6422a753038fe137d90ae7c1af57251316
   FirebaseStorage: 1d7ca8c8953fc61ccacaa7c612696b5402968a0d
@@ -369,4 +366,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 14143fc7d1c798d6b734e73f7240903056cb5df6
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.11.3
